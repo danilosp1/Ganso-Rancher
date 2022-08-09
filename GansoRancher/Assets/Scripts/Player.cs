@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {   
 
     private BoxCollider2D boxCollider;
+    private Rigidbody2D rb;
 
     [SerializeField]
     private float speed;
@@ -14,6 +15,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        rb = gameObject.AddComponent<Rigidbody2D>() as Rigidbody2D;
+        rb.bodyType = RigidbodyType2D.Kinematic;
     }
 
     // Update is called once per frame
@@ -23,7 +26,7 @@ public class Player : MonoBehaviour
     }
 
     public void Move(){
-        Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0f);
+        Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         transform.position += movement * Time.deltaTime * speed;
     }
 }
