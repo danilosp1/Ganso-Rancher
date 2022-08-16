@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     //private Animator playerAnimator;
     //private SpriteRenderer playerSpriteRenderer;
     private bool isFacingRight = true;
+    private bool isColliding = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +25,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Move(){
-        currentVelocity = new Vector2(Input.GetAxis("Horizontal") * velocity * Time.deltaTime, Input.GetAxis("Vertical") * velocity * Time.deltaTime);
-        transform.Translate(currentVelocity);
+
+        if(!isColliding){
+            currentVelocity = new Vector2(Input.GetAxis("Horizontal") * velocity * Time.deltaTime, Input.GetAxis("Vertical") * velocity * Time.deltaTime);
+            transform.Translate(currentVelocity);
+        }
         // playerAnimator.SetFloat("xVelocity", Mathf.Abs(currentVelocity.x));
 
         if(currentVelocity.x > 0f && !isFacingRight)
@@ -37,6 +41,12 @@ public class PlayerMovement : MonoBehaviour
             FlipPLayer();
         }
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        isColliding = true;
+    }
+    
     private void FlipPLayer()
     {
         isFacingRight = !isFacingRight;
