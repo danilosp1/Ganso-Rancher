@@ -13,6 +13,8 @@ public class GansoSpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(spawnGanso(gansoInterval, gansoPrefab));
+        Debug.Log("Valor: " + GameObject.Find("GansoSpawner").transform.position[0]);
+        Debug.Log("Valor: " + GameObject.Find("GansoSpawner").transform.position[1]);
     }
 
     // Update is called once per frame
@@ -24,7 +26,7 @@ public class GansoSpawner : MonoBehaviour
     private IEnumerator spawnGanso(float interval, GameObject ganso)
     {
         yield return new WaitForSeconds(interval);
-        GameObject newGanso = Instantiate(ganso, new Vector3(Random.Range(-5f, 5), Random.Range(-6f, 6f), 0), Quaternion.identity);
+        GameObject newGanso = Instantiate(ganso, new Vector3(GameObject.Find("GansoSpawner").transform.position[0] + Random.Range(-5f, 5f), GameObject.Find("GansoSpawner").transform.position[1] + Random.Range(-6f, 6f), 0), Quaternion.identity);
         StartCoroutine(spawnGanso(interval, ganso));
     }
 }
