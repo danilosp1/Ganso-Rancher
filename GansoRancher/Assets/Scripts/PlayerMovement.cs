@@ -26,10 +26,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(){
 
-        if(!isColliding){
-            currentVelocity = new Vector2(Input.GetAxis("Horizontal") * velocity * Time.deltaTime, Input.GetAxis("Vertical") * velocity * Time.deltaTime);
-            transform.Translate(currentVelocity);
-        }
+        // if(!isColliding){
+        currentVelocity = new Vector2(Input.GetAxis("Horizontal") * velocity * Time.deltaTime, Input.GetAxis("Vertical") * velocity * Time.deltaTime);
+        transform.Translate(currentVelocity);
+        // }
         // playerAnimator.SetFloat("xVelocity", Mathf.Abs(currentVelocity.x));
 
         if(currentVelocity.x > 0f && !isFacingRight)
