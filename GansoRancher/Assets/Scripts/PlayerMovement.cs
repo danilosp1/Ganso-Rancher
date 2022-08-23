@@ -5,51 +5,24 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float velocity = 5f;
-    private Vector2 currentVelocity;
-    //private Animator playerAnimator;
-    //private SpriteRenderer playerSpriteRenderer;
-    private bool isFacingRight = true;
-    private bool isColliding = false;
+    [SerializeField] private Rigidbody2D rb;
+    Vector2 movement;
 
     // Start is called before the first frame update
     void Start()
     {
-        // playerAnimator = GetComponentInChildren<Animator>();
-        // playerSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
     }
 
-    public void Move(){
-
-        // if(!isColliding){
-        currentVelocity = new Vector2(Input.GetAxis("Horizontal") * velocity * Time.deltaTime, Input.GetAxis("Vertical") * velocity * Time.deltaTime);
-        transform.Translate(currentVelocity);
-        // }
-        // playerAnimator.SetFloat("xVelocity", Mathf.Abs(currentVelocity.x));
-
-        if(currentVelocity.x > 0f && !isFacingRight)
-        {
-            FlipPLayer();
-        }
-        else if(currentVelocity.x < 0f && isFacingRight)
-        {
-            FlipPLayer();
-        }
+    void FixedUpdate() {
+        rb.MovePosition(rb.position + movement * velocity * Time.fixedDeltaTime);
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        isColliding = true;
-    }
-    
-    private void FlipPLayer()
-    {
-        isFacingRight = !isFacingRight;
-        // playerSpriteRenderer.flipX = !isFacingRight;
-    }
 }
