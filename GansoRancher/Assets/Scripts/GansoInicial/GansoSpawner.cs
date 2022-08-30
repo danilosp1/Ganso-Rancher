@@ -26,7 +26,12 @@ public class GansoSpawner : MonoBehaviour
     private IEnumerator spawnGanso(float interval, GameObject ganso)
     {
         yield return new WaitForSeconds(interval);
-        GameObject newGanso = Instantiate(ganso, new Vector3(GameObject.Find("GansoSpawner").transform.position[0] + Random.Range(-5f, 5f), GameObject.Find("GansoSpawner").transform.position[1] + Random.Range(-6f, 6f), 0), Quaternion.identity);
+        float xPos = GameObject.Find("GansoSpawner").transform.position[0] + Random.Range(-5f, 5f);
+        float yPos = GameObject.Find("GansoSpawner").transform.position[1] + Random.Range(-5f, 5f);
+        
+        // GameObject newGanso = Instantiate(ganso, new Vector3(xPos, yPos, 0), Quaternion.identity);
+        GameObject newGanso = Instantiate(ganso, new Vector3(xPos, yPos, 0), Quaternion.identity);
+        Debug.Log("X: " + xPos + " - Y: " + yPos);
         StartCoroutine(spawnGanso(interval, ganso));
     }
 }
