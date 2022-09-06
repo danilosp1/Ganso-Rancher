@@ -13,8 +13,6 @@ public class GansoSpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(spawnGanso(gansoInterval, gansoPrefab));
-        Debug.Log("Valor: " + GameObject.Find("GansoSpawner").transform.position[0]);
-        Debug.Log("Valor: " + GameObject.Find("GansoSpawner").transform.position[1]);
     }
 
     // Update is called once per frame
@@ -31,7 +29,6 @@ public class GansoSpawner : MonoBehaviour
         
         // GameObject newGanso = Instantiate(ganso, new Vector3(xPos, yPos, 0), Quaternion.identity);
         GameObject newGanso = Instantiate(ganso, new Vector3(xPos, yPos, 0), Quaternion.identity);
-        Debug.Log("X: " + xPos + " - Y: " + yPos);
         StartCoroutine(spawnGanso(interval, ganso));
     }
 }
