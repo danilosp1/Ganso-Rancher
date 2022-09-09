@@ -923,6 +923,7 @@ MonoBehaviour:
     sentences:
     - "Ol\xE1, eu sou o marquinhos leiteiro :)"
     - Seja bem vindo ao mundo
+    - Quer comprar algo?
   minDist: 4
 --- !u!212 &609757967
 SpriteRenderer:
@@ -1264,7 +1265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8966d5b83ecf4b542ae1142052fb3e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gansoPrefab: {fileID: 0}
+  gansoPrefab: {fileID: 2046247584}
   gansoInterval: 3.5
 --- !u!1 &1314198472
 GameObject:
@@ -1537,7 +1538,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046247584}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
